@@ -6,6 +6,11 @@ class User(models.Model):
     profile_pic = models.URLField()
 
 
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    profile_pic = models.ImageField(upload_to='images/')
+
+
 class Group(models.Model):
     name = models.CharField(max_length=100)
     members = models.ManyToManyField(User, through='membership')
